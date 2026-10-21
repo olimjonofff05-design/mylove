@@ -110,6 +110,34 @@ section{position:relative;min-height:100vh;display:flex;flex-direction:column;al
 .tape{position:absolute;width:110px;height:30px;background:rgba(233,168,176,.55);top:-14px;left:50%;transform:translateX(-50%) rotate(3deg)}
 .photo-note{margin-top:46px;font-size:clamp(20px,4.4vw,26px);font-style:italic;max-width:520px}
 
+/* ---------- Galereya ---------- */
+.wall{columns:2;column-gap:clamp(14px,3.5vw,28px);width:100%;max-width:1060px;padding:10px 4px}
+@media (min-width:720px){.wall{columns:3}}
+@media (min-width:1040px){.wall{columns:4}}
+.pic{break-inside:avoid;display:block;width:100%;margin:0 0 clamp(18px,4vw,30px);background:#fff;padding:8px 8px 10px;border:0;border-radius:3px;cursor:zoom-in;position:relative;
+  box-shadow:0 18px 34px -16px rgba(122,51,70,.45),0 3px 8px rgba(122,51,70,.08);transform:rotate(var(--rot));font:inherit}
+.pic.in{transform:rotate(var(--rot))}
+.pic.reveal{transform:translateY(40px) rotate(var(--rot))}
+.pic.reveal.in{transform:rotate(var(--rot))}
+.pic:hover{transform:rotate(0) scale(1.04)!important;z-index:2;box-shadow:0 26px 44px -16px rgba(122,51,70,.55)}
+.pic img{display:block;width:100%;height:auto;border-radius:2px}
+.pic span{display:block;padding:9px 2px 2px;font-family:"Marck Script",cursive;font-size:clamp(15px,3.8vw,19px);color:var(--wine);line-height:1.15}
+.pic::before{content:"";position:absolute;top:-9px;left:50%;width:56px;height:18px;transform:translateX(-50%) rotate(var(--tr));background:rgba(233,168,176,.5);z-index:1}
+.lb{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(40,16,26,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;touch-action:pan-y}
+.lb.open{opacity:1;visibility:visible}
+.lb-fig{background:#fff;padding:10px 10px 0;border-radius:4px;max-width:92vw;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.92);transition:transform .4s cubic-bezier(.2,.9,.3,1.2);text-align:center}
+.lb.open .lb-fig{transform:scale(1)}
+.lb-fig img{display:block;max-width:calc(92vw - 20px);max-height:72vh;width:auto;height:auto;border-radius:2px;transition:opacity .25s}
+.lb-fig figcaption{font-family:"Marck Script",cursive;font-size:clamp(22px,5.5vw,30px);color:var(--wine);padding:12px 8px 2px}
+.lb-n{font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.25em;color:var(--soft);padding-bottom:12px}
+.lb-x,.lb-nav{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;border-radius:50%;display:grid;place-items:center;transition:background .2s}
+.lb-x:hover,.lb-nav:hover{background:rgba(255,255,255,.28)}
+.lb-x{top:16px;right:16px;width:44px;height:44px;font-size:28px;line-height:1}
+.lb-nav{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:30px;line-height:1}
+.lb-nav.prev{left:12px}.lb-nav.next{right:12px}
+@media (max-width:600px){.lb-nav{top:auto;bottom:22px;transform:none}.lb-nav.prev{left:calc(50% - 64px)}.lb-nav.next{right:calc(50% - 64px)}.lb-fig img{max-height:64vh}}
+
 /* ---------- Satrlar ---------- */
 .lines{max-width:720px;display:flex;flex-direction:column;gap:56px}
 .lines blockquote{font-size:clamp(24px,5.4vw,36px);font-weight:300;line-height:1.35}
@@ -270,6 +298,13 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
     <p class="photo-note reveal">Shu kichkina suratda — butun bir dunyo bor. Sening yoningdagi men eng baxtli odamman.</p>
   </section>
 
+  <!-- 3b. Galereya -->
+  <section id="galereya">
+    <h2 class="title reveal">Bizning lahzalarimiz</h2>
+    <p class="sub reveal">har bir rasm — bir xotira · bosib kattalashtir</p>
+    <div class="wall" id="wall"></div>
+  </section>
+
   <!-- 4. Satrlar -->
   <section id="satrlar">
     <h2 class="title reveal">Sen haqingda</h2>
@@ -348,6 +383,17 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
 
 <footer>Элмира · Seni sevaman · ∞</footer>
 
+<div class="lb" id="lb" role="dialog" aria-label="Rasm" aria-hidden="true">
+  <button class="lb-x" id="lbX" aria-label="Yopish">×</button>
+  <button class="lb-nav prev" id="lbP" aria-label="Oldingi">‹</button>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+    <div class="lb-n" id="lbN"></div>
+  </figure>
+  <button class="lb-nav next" id="lbN2" aria-label="Keyingi">›</button>
+</div>
+
 <script>
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -374,6 +420,59 @@ function tickTimer(){
   }
 }
 tickTimer(); setInterval(tickTimer, 1000);
+
+/* ================= Galereya ================= */
+const PHOTOS = [
+  ["01","Shu ko'z qisishing 😉"],["02","Eng iliq oqshomlarimiz"],["03","Mening go'zalim"],
+  ["04","Biz va shiftdagi chiroq 😄"],["05","Qizil lab bo'yog'ing ♥"],["06","Xira, lekin eng baxtli lahza"],
+  ["07","Pushti kayfiyat 🎀"],["08","Kino oqshomi 🎬"],["09","Pepsi, kino va sen"],
+  ["10","Arazchi go'zalim 😘"],["11","Yelkamdagi boshing"],["12","Pushti telefon va sen 📱"],
+  ["13","Qo'lingni hech qachon qo'yib yubormayman"],["14","Qizil chiroqlar ostida"]
+];
+const wall = $('wall');
+PHOTOS.forEach(([f, cap], i) => {
+  const b = document.createElement('button');
+  b.className = 'pic reveal';
+  b.style.setProperty('--rot', (((i * 37) % 9) - 4) * .8 + 'deg');
+  b.style.setProperty('--tr', (((i * 53) % 7) - 3) * 2 + 'deg');
+  b.innerHTML = `<img src="rasmlar/${f}.jpg" alt="" loading="lazy"><span></span>`;
+  b.querySelector('span').textContent = cap;
+  b.querySelector('img').alt = cap;
+  b.addEventListener('click', () => openLb(i));
+  wall.appendChild(b);
+});
+const lb = $('lb'), lbImg = $('lbImg');
+let cur = 0;
+function showLb(i){
+  cur = (i + PHOTOS.length) % PHOTOS.length;
+  lbImg.style.opacity = 0;
+  setTimeout(() => {
+    lbImg.src = `rasmlar/${PHOTOS[cur][0]}.jpg`; lbImg.alt = PHOTOS[cur][1];
+    $('lbCap').textContent = PHOTOS[cur][1];
+    $('lbN').textContent = `${cur + 1} / ${PHOTOS.length}`;
+    lbImg.onload = () => lbImg.style.opacity = 1;
+  }, 150);
+}
+function openLb(i){ showLb(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
+function closeLb(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+$('lbX').addEventListener('click', closeLb);
+$('lbP').addEventListener('click', e => { e.stopPropagation(); showLb(cur - 1); });
+$('lbN2').addEventListener('click', e => { e.stopPropagation(); showLb(cur + 1); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') showLb(cur - 1);
+  if (e.key === 'ArrowRight') showLb(cur + 1);
+});
+let sx = null;
+lb.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+lb.addEventListener('touchend', e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx;
+  if (Math.abs(dx) > 45) showLb(cur + (dx < 0 ? 1 : -1));
+  sx = null;
+});
 
 /* ================= Nega seni sevaman ================= */
 const REASONS = [
