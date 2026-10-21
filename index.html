@@ -6,100 +6,145 @@
 <title>Элмира uchun 💌</title>
 <meta name="description" content="Элмира, bu sahifa faqat sen uchun.">
 <meta property="og:title" content="Элмира uchun 💌">
-<meta property="og:description" content="Bu sahifa faqat sen uchun.">
-<meta property="og:image" content="biz.jpg">
+<meta property="og:description" content="Bu sahifa faqat sen uchun. Och va oxirigacha pastga tush.">
+<meta property="og:image" content="https://olimjonofff05-design.github.io/mylove/biz.jpg">
+<meta property="og:type" content="website">
 <meta name="theme-color" content="#f8e8e6">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marck+Script&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marck+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#fdf6f2; --blush:#f8e3e1; --rose:#e9a8b0; --rose-deep:#c9707f;
-  --wine:#7a3346; --ink:#4a2a33; --soft:#8d6b73; --gold:#d8b27a;
+  --rose:#e9a8b0; --rose-deep:#c9707f; --wine:#7a3346; --ink:#4a2a33; --soft:#8d6b73; --gold:#d8b27a;
   --glass:rgba(255,255,255,.55);
+  --n-ink:#f7e9f0; --n-soft:#c9b6d6; --n-rose:#f5a9bd; --n-gold:#f3d39a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:"Cormorant Garamond",Georgia,serif; color:var(--ink);
-  background:linear-gradient(180deg,#fdf6f2 0%,#f9e6e4 30%,#f6dde0 60%,#fbeee9 100%);
-  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  font-family:"Cormorant Garamond",Georgia,serif;color:var(--ink);
+  background:linear-gradient(180deg,#fdf6f2 0%,#f9e6e4 18%,#f6dde0 40%,#f3d6de 60%,#e8c9d6 100%);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
 body.locked{overflow:hidden}
-#petals{position:fixed;inset:0;pointer-events:none;z-index:1}
-main{position:relative;z-index:2}
-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;text-align:center}
+main{position:relative;z-index:3}
+section{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 20px;text-align:center}
 
-/* ---------- Konvert (kirish) ---------- */
-#intro{
-  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:radial-gradient(ellipse at center,#fff7f4 0%,#f6d9dc 70%,#eec3c9 100%);
-  transition:opacity 1.2s ease, visibility 1.2s;
-}
+/* ---------- Fon qatlamlari ---------- */
+#sky{position:fixed;inset:0;z-index:0;opacity:0;pointer-events:none;
+  background:radial-gradient(ellipse at 70% 10%,#3a2459 0%,transparent 55%),radial-gradient(ellipse at 15% 90%,#4a1f45 0%,transparent 50%),linear-gradient(180deg,#0b0d26 0%,#161339 45%,#24163d 100%)}
+#stars{position:absolute;inset:0;width:100%;height:100%}
+.moon{position:absolute;top:9vh;right:12vw;width:clamp(56px,11vw,96px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 38%,#fffaf0 0%,#f6e6c8 55%,#e9cfa4 100%);
+  box-shadow:0 0 40px 10px rgba(255,236,200,.35),0 0 120px 40px rgba(255,220,180,.15)}
+.moon::after{content:"";position:absolute;width:22%;height:22%;border-radius:50%;background:rgba(200,170,130,.25);top:30%;left:52%;box-shadow:-18px 22px 0 -4px rgba(200,170,130,.2)}
+#petals{position:fixed;inset:0;pointer-events:none;z-index:1}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:40;background:linear-gradient(90deg,#f3b9c2,#c9707f,#f3d39a);box-shadow:0 0 10px rgba(201,112,127,.6)}
+
+/* ---------- Konvert ---------- */
+#intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,#fff7f4 0%,#f6d9dc 70%,#eec3c9 100%);transition:opacity 1.2s ease,visibility 1.2s}
 #intro.hide{opacity:0;visibility:hidden}
 .envelope{position:relative;width:260px;height:170px;cursor:pointer;filter:drop-shadow(0 18px 30px rgba(122,51,70,.22));animation:float 3.5s ease-in-out infinite}
 .envelope .body{position:absolute;inset:0;background:linear-gradient(160deg,#fff,#fbe9ea);border-radius:10px}
-.envelope .flap{position:absolute;left:0;right:0;top:0;height:100%;
-  clip-path:polygon(0 0,100% 0,50% 58%);background:linear-gradient(180deg,#f4c9cf,#eab3bb);border-radius:10px 10px 0 0;
-  transform-origin:top;transition:transform .9s ease}
-.envelope .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-30%);width:54px;height:54px;border-radius:50%;
+.envelope .paper{position:absolute;left:14px;right:14px;top:10px;height:130px;background:#fffaf6;border-radius:6px;display:grid;place-items:center;
+  font-family:"Marck Script",cursive;color:var(--wine);font-size:26px;transition:transform 1s ease .35s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.envelope .front{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#fff 0%,#fbe9ea 100%);clip-path:polygon(0 35%,50% 70%,100% 35%,100% 100%,0 100%)}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:100%;z-index:3;clip-path:polygon(0 0,100% 0,50% 58%);
+  background:linear-gradient(180deg,#f4c9cf,#eab3bb);border-radius:10px 10px 0 0;transform-origin:top;transition:transform .9s ease}
+.envelope .seal{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-30%);width:54px;height:54px;border-radius:50%;
   background:radial-gradient(circle at 35% 35%,#d9798a,#a8455a);display:grid;place-items:center;color:#fff;font-size:24px;box-shadow:0 4px 10px rgba(0,0,0,.18);transition:opacity .4s}
-.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
 .envelope.open .seal{opacity:0}
+.envelope.open .paper{transform:translateY(-90px)}
 #intro p.to{font-family:"Marck Script",cursive;font-size:clamp(34px,8vw,52px);color:var(--wine);margin-bottom:34px}
 #intro p.hint{font-family:Montserrat,sans-serif;font-weight:300;letter-spacing:.25em;text-transform:uppercase;font-size:11px;color:var(--soft);margin-top:36px;animation:pulse 2s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px)}}
 @keyframes pulse{50%{opacity:.35}}
 
+/* ---------- Umumiy ---------- */
+.eyebrow,.sub{font-family:Montserrat,sans-serif;font-weight:300;letter-spacing:.35em;text-transform:uppercase;font-size:12px;color:var(--soft)}
+.sub{letter-spacing:.2em;font-size:12.5px;margin-bottom:46px}
+.title{font-family:"Marck Script",cursive;font-weight:400;font-size:clamp(44px,10vw,74px);color:var(--wine);margin-bottom:10px;line-height:1.1}
+.lead{font-size:clamp(20px,4.6vw,28px);font-style:italic;font-weight:300;max-width:620px}
+.divider{display:flex;align-items:center;gap:14px;color:var(--rose);margin:0 auto 18px;font-size:14px}
+.divider::before,.divider::after{content:"";width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--rose))}
+.divider::after{transform:scaleX(-1)}
+
 /* ---------- Hero ---------- */
-.eyebrow{font-family:Montserrat,sans-serif;font-weight:300;letter-spacing:.4em;text-transform:uppercase;font-size:12px;color:var(--soft)}
-.name{
-  font-family:"Marck Script",cursive;font-weight:400;line-height:1;
-  font-size:clamp(84px,22vw,200px);margin:18px 0 10px;
+.aura{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.aura i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;animation:drift 18s ease-in-out infinite alternate}
+.aura i:nth-child(1){width:52vw;height:52vw;max-width:520px;max-height:520px;background:#f7bfc8;left:-10%;top:10%}
+.aura i:nth-child(2){width:46vw;height:46vw;max-width:460px;max-height:460px;background:#f6d7b8;right:-12%;top:30%;animation-delay:-6s}
+.aura i:nth-child(3){width:40vw;height:40vw;max-width:400px;max-height:400px;background:#e7c1e0;left:30%;bottom:-5%;animation-delay:-12s}
+@keyframes drift{to{transform:translate(8%,-10%) scale(1.15)}}
+.name{font-family:"Marck Script",cursive;font-weight:400;line-height:1;font-size:clamp(84px,22vw,210px);margin:18px 0 10px;
   background:linear-gradient(120deg,#b24f66 0%,#e59aa6 40%,#d8b27a 60%,#b24f66 100%);background-size:200% auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;
-  filter:drop-shadow(0 6px 18px rgba(201,112,127,.25));
-}
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;filter:drop-shadow(0 6px 18px rgba(201,112,127,.25))}
 @keyframes shine{to{background-position:200% center}}
-.lead{font-size:clamp(20px,4.6vw,28px);font-style:italic;font-weight:300;max-width:620px;color:var(--ink)}
 .scroll-cue{margin-top:60px;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--soft);font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
 .scroll-cue .line{width:1px;height:56px;background:linear-gradient(var(--rose),transparent);animation:drip 2s ease-in-out infinite;transform-origin:top}
 @keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
+/* ---------- Taymer ---------- */
+.since{font-size:clamp(18px,4.2vw,22px);font-style:italic;color:var(--soft);margin-bottom:34px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2.4vw,18px);width:100%;max-width:680px}
+.tile{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);
+  border-radius:20px;padding:clamp(14px,3.5vw,26px) 4px;box-shadow:0 14px 30px -16px rgba(122,51,70,.35)}
+.tile .n{font-size:clamp(32px,9vw,64px);font-weight:500;color:var(--wine);line-height:1;font-variant-numeric:tabular-nums}
+.tile .u{font-family:Montserrat,sans-serif;font-weight:400;font-size:clamp(9px,2.4vw,11px);letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:10px}
+.tile.sec .n{color:var(--rose-deep)}
+.facts{margin-top:40px;display:flex;flex-direction:column;gap:14px;font-size:clamp(19px,4.4vw,24px);max-width:600px}
+.facts b{font-weight:500;color:var(--rose-deep);font-variant-numeric:tabular-nums}
+.beat{display:inline-block;animation:beat 1s ease-in-out infinite;color:var(--rose-deep)}
+.milestone{display:inline-block;margin-top:8px;padding:10px 20px;border-radius:999px;background:linear-gradient(135deg,rgba(243,185,194,.5),rgba(246,215,184,.5));
+  font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.05em;color:var(--wine)}
+
 /* ---------- Rasm ---------- */
-.polaroid{
-  background:#fff;padding:16px 16px 70px;border-radius:4px;max-width:min(440px,88vw);
-  box-shadow:0 30px 60px -20px rgba(122,51,70,.35),0 8px 20px rgba(122,51,70,.08);
-  transform:rotate(-2.5deg);position:relative;transition:transform .6s ease;
-}
+.polaroid{background:#fff;padding:16px 16px 70px;border-radius:4px;max-width:min(440px,86vw);
+  box-shadow:0 30px 60px -20px rgba(122,51,70,.35),0 8px 20px rgba(122,51,70,.08);transform:rotate(-2.5deg);position:relative;transition:transform .6s ease}
 .polaroid:hover{transform:rotate(0) scale(1.02)}
 .polaroid img{display:block;width:100%;height:auto;border-radius:2px;filter:sepia(.18) contrast(1.02)}
 .polaroid figcaption{position:absolute;left:0;right:0;bottom:18px;font-family:"Marck Script",cursive;font-size:30px;color:var(--wine)}
-.tape{position:absolute;width:110px;height:30px;background:rgba(233,168,176,.55);top:-14px;left:50%;transform:translateX(-50%) rotate(3deg);backdrop-filter:blur(2px)}
-.photo-note{margin-top:46px;font-size:clamp(20px,4.4vw,26px);font-style:italic;max-width:520px;color:var(--ink)}
+.tape{position:absolute;width:110px;height:30px;background:rgba(233,168,176,.55);top:-14px;left:50%;transform:translateX(-50%) rotate(3deg)}
+.photo-note{margin-top:46px;font-size:clamp(20px,4.4vw,26px);font-style:italic;max-width:520px}
 
 /* ---------- Satrlar ---------- */
-.title{font-family:"Marck Script",cursive;font-weight:400;font-size:clamp(44px,10vw,72px);color:var(--wine);margin-bottom:12px}
-.sub{font-family:Montserrat,sans-serif;font-weight:300;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:50px}
 .lines{max-width:720px;display:flex;flex-direction:column;gap:56px}
 .lines blockquote{font-size:clamp(24px,5.4vw,36px);font-weight:300;line-height:1.35}
 .lines blockquote em{color:var(--rose-deep);font-style:italic}
 .lines .heart{display:block;font-size:18px;color:var(--rose);margin-top:16px;letter-spacing:.6em}
 
+/* ---------- Nega seni sevaman ---------- */
+.reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;width:100%;max-width:980px}
+.rc{perspective:900px;height:clamp(170px,44vw,200px);cursor:pointer;border:0;background:none;font:inherit;color:inherit}
+.rc .in{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.rc.flip .in{transform:rotateY(180deg)}
+.rc .f,.rc .b{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.rc .f{background:linear-gradient(145deg,#f7c6ce 0%,#e9a0ae 55%,#d98596 100%);color:#fff;box-shadow:0 14px 28px -14px rgba(178,79,102,.6);overflow:hidden}
+.rc .f::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.45);border-radius:14px}
+.rc .f::after{content:"";position:absolute;top:-60%;left:-60%;width:60%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(20deg);animation:sheen 4.5s ease-in-out infinite}
+.rc:nth-child(3n) .f::after{animation-delay:1.5s}.rc:nth-child(3n+1) .f::after{animation-delay:3s}
+@keyframes sheen{0%,60%{left:-60%}100%{left:160%}}
+.rc .f .num{font-size:44px;font-weight:300;line-height:1}
+.rc .f .hint{font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;margin-top:10px;opacity:.85}
+.rc .b{transform:rotateY(180deg);background:#fffaf7;border:1px solid #f3d3d8;box-shadow:0 14px 28px -16px rgba(122,51,70,.35);font-size:clamp(17px,4.2vw,20px);line-height:1.3;color:var(--ink)}
+.rc .b::before{content:"♥";color:var(--rose);font-size:14px;margin-bottom:8px}
+.reasons-count{margin-top:30px;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.reasons-done{margin-top:16px;font-size:clamp(22px,5vw,30px);font-style:italic;color:var(--wine);opacity:0;transform:translateY(10px);transition:1s}
+.reasons-done.show{opacity:1;transform:none}
+
 /* ---------- Tillar ---------- */
 #tillar{min-height:auto}
 .big-love{height:clamp(120px,24vw,180px);display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:40px}
-.big-love .phrase{font-size:clamp(34px,8vw,64px);font-weight:400;color:var(--wine);transition:opacity .6s,transform .6s;line-height:1.15}
+.big-love .phrase{font-size:clamp(34px,8vw,64px);color:var(--wine);transition:opacity .6s,transform .6s;line-height:1.15}
 .big-love .lang{font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);margin-top:12px;transition:opacity .6s}
 .big-love.fade .phrase{opacity:0;transform:translateY(10px)}
 .big-love.fade .lang{opacity:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;width:100%;max-width:1100px}
-.card{
-  background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:18px 14px;
-  box-shadow:0 6px 18px -8px rgba(122,51,70,.18);transition:transform .35s,box-shadow .35s,background .35s;cursor:default
-}
+.card{background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:18px 12px;
+  box-shadow:0 6px 18px -8px rgba(122,51,70,.18);transition:transform .35s,box-shadow .35s,background .35s}
 .card:hover{transform:translateY(-4px);background:rgba(255,255,255,.85);box-shadow:0 14px 28px -10px rgba(201,112,127,.4)}
 .card .p{font-size:clamp(17px,4.4vw,22px);color:var(--wine);line-height:1.25;word-break:break-word}
 .card .l{font-family:Montserrat,sans-serif;font-weight:300;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-top:8px}
@@ -107,36 +152,64 @@ section{min-height:100vh;display:flex;flex-direction:column;align-items:center;j
 .card.uz .p,.card.uz .l{color:#fff}
 .count{margin-top:34px;font-style:italic;font-size:20px;color:var(--soft)}
 
-/* ---------- Xat ---------- */
-.letter{
-  max-width:640px;background:#fffaf7;border-radius:6px;padding:clamp(30px,7vw,60px);text-align:left;position:relative;
-  box-shadow:0 30px 60px -25px rgba(122,51,70,.35);
-  background-image:repeating-linear-gradient(transparent 0 37px,rgba(233,168,176,.25) 37px 38px);
-}
-.letter p{font-size:clamp(20px,4.4vw,24px);line-height:38px;font-weight:400}
+/* ---------- Xat (kecha boshlanadi) ---------- */
+.night-intro{color:var(--n-ink);margin-bottom:40px}
+.night-intro .title{color:var(--n-ink)}
+.night-intro .sub{color:var(--n-soft);margin-bottom:0}
+.letter{max-width:640px;width:100%;background:#fffaf7;border-radius:6px;padding:clamp(30px,7vw,60px);text-align:left;position:relative;cursor:pointer;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.6),0 0 60px rgba(245,169,189,.18);
+  background-image:repeating-linear-gradient(transparent 0 37px,rgba(233,168,176,.25) 37px 38px)}
+.letter p{font-size:clamp(20px,4.4vw,24px);line-height:38px;min-height:38px}
 .letter .hello{font-family:"Marck Script",cursive;font-size:clamp(32px,7vw,42px);color:var(--wine);margin-bottom:14px;line-height:1.2}
 .letter .sign{font-family:"Marck Script",cursive;font-size:30px;color:var(--wine);text-align:right;margin-top:24px}
+.caret{display:inline-block;width:2px;height:1em;background:var(--rose-deep);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- O'yin ---------- */
+#oyin{color:var(--n-ink)}
+#oyin .title{color:var(--n-ink)}
+#oyin .sub{color:var(--n-soft)}
+.arena{position:relative;width:100%;max-width:560px;height:280px;border-radius:28px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:inset 0 0 60px rgba(245,169,189,.08)}
+.arena .q{position:absolute;top:34px;left:0;right:0;font-size:clamp(28px,7vw,40px);font-family:"Marck Script",cursive;color:var(--n-ink)}
+.gbtn{position:absolute;border:0;cursor:pointer;font-family:Montserrat,sans-serif;font-weight:500;font-size:15px;letter-spacing:.12em;border-radius:999px;padding:16px 34px;white-space:nowrap;
+  transition:left .35s cubic-bezier(.2,.9,.3,1.3),top .35s cubic-bezier(.2,.9,.3,1.3),transform .3s}
+#yes{left:calc(50% - 120px);top:150px;color:#fff;background:linear-gradient(135deg,#f08ea3,#c4506a);box-shadow:0 12px 28px -8px rgba(240,142,163,.7);transform-origin:center;z-index:2}
+#yes::after{content:"";position:absolute;inset:-6px;border-radius:inherit;border:2px solid rgba(240,142,163,.6);animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
+#no{left:calc(50% + 20px);top:150px;color:var(--n-ink);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:14px;padding:15px 26px}
+.result{display:none;flex-direction:column;align-items:center;gap:14px}
+.result.show{display:flex;animation:pop .9s cubic-bezier(.2,.9,.3,1.4)}
+.result .big{font-size:clamp(90px,24vw,150px);line-height:1;animation:beat 1.2s ease-in-out infinite}
+.result h3{font-family:"Marck Script",cursive;font-weight:400;font-size:clamp(44px,11vw,72px);color:var(--n-rose)}
+.result p{font-size:clamp(20px,4.8vw,26px);font-style:italic;max-width:480px;color:var(--n-ink)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
 
 /* ---------- Yakun ---------- */
-.final .infinity{font-size:clamp(64px,16vw,120px);color:var(--rose-deep);line-height:1;animation:beat 1.6s ease-in-out infinite}
-@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
-.final h2{font-family:"Marck Script",cursive;font-weight:400;font-size:clamp(48px,11vw,84px);color:var(--wine);margin:20px 0}
-.btn{
-  margin-top:30px;border:0;cursor:pointer;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.25em;text-transform:uppercase;
-  color:#fff;padding:18px 34px;border-radius:999px;background:linear-gradient(135deg,#e48d9d,#b24f66);
-  box-shadow:0 12px 26px -10px rgba(178,79,102,.7);transition:transform .25s
-}
+.final{color:var(--n-ink)}
+#constellation{width:100%;max-width:900px;height:clamp(150px,36vw,300px);display:block}
+.final .stars-note{font-size:clamp(20px,4.8vw,28px);font-style:italic;max-width:560px;margin:24px 0 8px;color:var(--n-ink)}
+.final h2{font-family:"Marck Script",cursive;font-weight:400;font-size:clamp(44px,10vw,78px);color:var(--n-rose);margin:16px 0 6px;text-shadow:0 0 30px rgba(245,169,189,.45)}
+.final .lead{color:var(--n-soft)}
+.btn{margin-top:34px;border:0;cursor:pointer;font-family:Montserrat,sans-serif;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:#fff;padding:18px 34px;border-radius:999px;
+  background:linear-gradient(135deg,#f08ea3,#b24f66);box-shadow:0 12px 30px -8px rgba(240,142,163,.75);transition:transform .25s}
 .btn:hover{transform:translateY(-2px) scale(1.03)}
 .btn:active{transform:scale(.97)}
-footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-serif;font-weight:300;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);position:relative;z-index:2}
+.wish{margin-top:28px;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--n-soft);opacity:.8}
+footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-serif;font-weight:300;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--n-soft);position:relative;z-index:3}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
 
-/* Paydo bo'lish animatsiyasi */
+/* ---------- Animatsiyalar ---------- */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s ease}
 .reveal.in{opacity:1;transform:none}
-.card.reveal{transition-duration:.7s}
-
-.burst{position:fixed;pointer-events:none;z-index:60;font-size:22px;animation:fly 1.8s ease-out forwards}
+.card.reveal,.rc.reveal{transition-duration:.7s}
+.burst,.tap,.rain{position:fixed;pointer-events:none;z-index:60}
+.burst{animation:fly 1.8s ease-out forwards}
 @keyframes fly{to{transform:translate(var(--dx),var(--dy)) scale(.6) rotate(var(--r));opacity:0}}
+.tap{font-size:20px;animation:rise 1.4s ease-out forwards;transform:translate(-50%,-50%)}
+@keyframes rise{to{transform:translate(-50%,-130px) scale(1.4);opacity:0}}
+.rain{top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(calc(100vh + 80px)) rotate(var(--r))}}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -147,22 +220,47 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
   <p class="to">Элмира uchun</p>
   <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Xatni ochish">
     <div class="body"></div>
+    <div class="paper">♥ Seni sevaman ♥</div>
+    <div class="front"></div>
     <div class="flap"></div>
     <div class="seal">♥</div>
   </div>
   <p class="hint">Xatni ochish uchun bos</p>
 </div>
 
+<div id="progress"></div>
+<div id="sky"><canvas id="stars"></canvas><div class="moon"></div></div>
 <canvas id="petals"></canvas>
 
 <main>
+  <!-- 1. Ism -->
   <section id="hero">
+    <div class="aura"><i></i><i></i><i></i></div>
     <p class="eyebrow reveal">Bu sahifa faqat sen uchun</p>
     <h1 class="name reveal">Элмира</h1>
     <p class="lead reveal">Ba'zi so'zlarni aytib bo'lmaydi — ularni faqat his qilish mumkin. Men ularni shu yerga, sen uchun yozib qo'ydim.</p>
     <div class="scroll-cue reveal"><span>Pastga tush</span><span class="line"></span></div>
   </section>
 
+  <!-- 2. Taymer -->
+  <section id="taymer">
+    <div class="divider reveal">♥</div>
+    <h2 class="title reveal">Biz birgamiz</h2>
+    <p class="since reveal">26-avgust, 2026-yil · soat 22:30 dan beri</p>
+    <div class="timer reveal">
+      <div class="tile"><div class="n" id="tD">0</div><div class="u">kun</div></div>
+      <div class="tile"><div class="n" id="tH">00</div><div class="u">soat</div></div>
+      <div class="tile"><div class="n" id="tM">00</div><div class="u">daqiqa</div></div>
+      <div class="tile sec"><div class="n" id="tS">00</div><div class="u">soniya</div></div>
+    </div>
+    <div class="facts reveal">
+      <p>Shu vaqt ichida yuragim sen uchun taxminan <b id="beats">0</b> marta urdi <span class="beat">♥</span></p>
+      <p>va har bir soniyasi — men uchun baxt.</p>
+      <div><span class="milestone" id="milestone"></span></div>
+    </div>
+  </section>
+
+  <!-- 3. Rasm -->
   <section id="biz">
     <figure class="polaroid reveal">
       <span class="tape"></span>
@@ -172,6 +270,7 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
     <p class="photo-note reveal">Shu kichkina suratda — butun bir dunyo bor. Sening yoningdagi men eng baxtli odamman.</p>
   </section>
 
+  <!-- 4. Satrlar -->
   <section id="satrlar">
     <h2 class="title reveal">Sen haqingda</h2>
     <p class="sub reveal">yuragimdagi so'zlar</p>
@@ -182,10 +281,19 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
       <blockquote class="reveal">Seni sevish men uchun <em>nafas olishdek tabiiy</em> — men buni o'ylab qilmayman, shunchaki yashayman.<span class="heart">♥ ♥ ♥</span></blockquote>
       <blockquote class="reveal">Qayerda bo'lsam ham, yuragimning bir bo'lagi <em>doim sening yoningda</em>.<span class="heart">♥ ♥ ♥</span></blockquote>
       <blockquote class="reveal">Sen — mening eng go'zal tasodifim va <em>eng to'g'ri tanlovim</em>.<span class="heart">♥ ♥ ♥</span></blockquote>
-      <blockquote class="reveal">Sen bilan o'tgan har bir daqiqa — umrimning <em>eng qimmatli sahifasi</em>.<span class="heart">♥ ♥ ♥</span></blockquote>
     </div>
   </section>
 
+  <!-- 5. Nega seni sevaman -->
+  <section id="sabablar">
+    <h2 class="title reveal">Nega seni sevaman?</h2>
+    <p class="sub reveal">har bir kartochkani bosib och</p>
+    <div class="reasons" id="reasons"></div>
+    <p class="reasons-count" id="rCount"></p>
+    <p class="reasons-done" id="rDone">Va yana minglab sabablar… lekin eng asosiysi — sen sen bo'lganing uchun 💗</p>
+  </section>
+
+  <!-- 6. Tillar -->
   <section id="tillar">
     <h2 class="title reveal">Seni sevaman</h2>
     <p class="sub reveal">dunyoning barcha tillarida</p>
@@ -197,27 +305,119 @@ footer{padding:40px 20px 50px;text-align:center;font-family:Montserrat,sans-seri
     <p class="count reveal" id="count"></p>
   </section>
 
+  <!-- 7. Xat — osmon qorong'ilashadi -->
   <section id="xat">
-    <div class="letter reveal">
+    <div class="night-intro">
+      <h2 class="title reveal">Kecha tushdi…</h2>
+      <p class="sub reveal">yulduzlar ostida senga bir xat</p>
+    </div>
+    <div class="letter reveal" id="letter" title="Bosib, xatni birdaniga ochish mumkin">
       <p class="hello">Azizam Элмира,</p>
-      <p>Men seni qanchalik sevishimni so'z bilan to'liq aytib berolmayman. Lekin bilib qo'y: sen kelganingdan beri hayotim boshqacha ranglarga kirdi. Sen — mening tinchligim, quvonchim va eng shirin orzuim.</p>
-      <p>Seni har kuni yangidan, avvalgisidan ham ko'proq sevaman. Va bu hech qachon tugamaydi.</p>
-      <p class="sign">Faqat seniki ♥</p>
+      <p data-t="Men seni qanchalik sevishimni so'z bilan to'liq aytib berolmayman. Lekin bilib qo'y: sen kelganingdan beri hayotim boshqacha ranglarga kirdi. Sen — mening tinchligim, quvonchim va eng shirin orzuim."></p>
+      <p data-t="Seni har kuni yangidan, avvalgisidan ham ko'proq sevaman. Va bu hech qachon tugamaydi."></p>
+      <p class="sign" data-t="Faqat seniki ♥"></p>
     </div>
   </section>
 
+  <!-- 8. O'yin -->
+  <section id="oyin">
+    <h2 class="title reveal">Bitta savol…</h2>
+    <p class="sub reveal">faqat rostini ayt 😊</p>
+    <div class="arena reveal" id="arena">
+      <div class="q">Meni sevasanmi, Элмира?</div>
+      <button class="gbtn" id="yes">Ha 💗</button>
+      <button class="gbtn" id="no">Yo'q</button>
+    </div>
+    <div class="result" id="result">
+      <div class="big">💗</div>
+      <h3>Bilardim!</h3>
+      <p>Men ham seni sevaman — cheksiz, chegarasiz va abadiy.</p>
+    </div>
+  </section>
+
+  <!-- 9. Yakun — yulduzlardan ism -->
   <section class="final" id="yakun">
-    <div class="infinity reveal">♥</div>
+    <canvas id="constellation" aria-label="Yulduzlardan yozilgan Элмира ismi"></canvas>
+    <p class="stars-note reveal">Osmondagi barcha yulduzlar ham seni qanchalik sevishimni sanab bitirolmaydi.</p>
     <h2 class="reveal">Seni sevaman, Элмира</h2>
     <p class="lead reveal">bugun, ertaga va har doim</p>
     <button class="btn reveal" id="loveBtn">Yuragimni bos 💗</button>
+    <p class="wish reveal">✦ uchar yulduzni ko'rsang — tilak qil ✦</p>
   </section>
 </main>
 
 <footer>Элмира · Seni sevaman · ∞</footer>
 
 <script>
-/* ---------- "Seni sevaman" — tillar ---------- */
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+const $ = id => document.getElementById(id);
+
+/* ================= Taymer ================= */
+const START = new Date('2026-08-26T22:30:00+05:00').getTime();
+const pad = n => String(n).padStart(2, '0');
+const fmt = n => n.toLocaleString('ru-RU');
+const MILESTONES = [[30,'1 oyligimiz'],[100,'100 kunligimiz'],[200,'200 kunligimiz'],[365,'1 yilligimiz'],[500,'500 kunligimiz'],[730,'2 yilligimiz'],[1000,'1000 kunligimiz']];
+function tickTimer(){
+  const ms = Math.max(0, Date.now() - START), s = Math.floor(ms / 1000);
+  $('tD').textContent = Math.floor(s / 86400);
+  $('tH').textContent = pad(Math.floor(s % 86400 / 3600));
+  $('tM').textContent = pad(Math.floor(s % 3600 / 60));
+  $('tS').textContent = pad(s % 60);
+  $('beats').textContent = fmt(Math.floor(s / 60 * 72));
+  const days = ms / 86400000, next = MILESTONES.find(m => m[0] > days);
+  if (next) {
+    const left = Math.ceil(next[0] - days);
+    const d = new Date(START + next[0] * 86400000);
+    const oy = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'][d.getMonth()];
+    $('milestone').textContent = `🎉 ${next[1]}gacha ${left} kun qoldi · ${d.getDate()}-${oy}`;
+  }
+}
+tickTimer(); setInterval(tickTimer, 1000);
+
+/* ================= Nega seni sevaman ================= */
+const REASONS = [
+  "Tabassuming eng qorong'i kunimni ham yoritadi",
+  "Ko'zlaringga qarasam, butun dunyoni unutaman",
+  "Sen bilan jimlik ham suhbatdek yoqimli",
+  "Aytmagan gaplarimni ham tushunasan",
+  "Kulging — men eshitgan eng go'zal musiqa",
+  "Yoningda o'zimni uydagidek his qilaman",
+  "Yuragingning pokligi va mehribonliging uchun",
+  "Meni o'zimning eng yaxshi versiyamga aylantirasan",
+  "Kichik narsalardan ham chin dildan quvona olasan",
+  "Ovozing — kunimning eng shirin qismi",
+  "Hatto arazlashing ham juda yoqimli 😊",
+  "Men bilan ko'zoynak taqib, shunday rasmlarga tusha olasan 😎",
+  "Sening g'amxo'rliging meni isitadi",
+  "Meni qanday bo'lsam, shundayligimcha qabul qilasan",
+  "Seni o'ylasam, yuragim tezroq ura boshlaydi",
+  "Sen bilan kelajakni orzu qilish juda shirin",
+  "Kuchli va o'ziga ishongan qizsan",
+  "Har uchrashuvdan keyin seni yanada ko'proq sog'inaman",
+  "Sen — mening eng yaqin do'stim ham",
+  "Chunki sen — Элмира. Boshqa sabab kerak emas"
+];
+const rWrap = $('reasons'); let opened = 0;
+const updateCount = () => $('rCount').textContent = `${opened} / ${REASONS.length} ochildi`;
+REASONS.forEach((txt, i) => {
+  const b = document.createElement('button');
+  b.className = 'rc reveal'; b.style.transitionDelay = (i % 4) * 70 + 'ms';
+  b.setAttribute('aria-label', `${i + 1}-sabab`);
+  b.innerHTML = `<div class="in"><div class="f"><div class="num">${pad(i + 1)}</div><div class="hint">bos ♥</div></div><div class="b"></div></div>`;
+  b.querySelector('.b').textContent = txt;
+  b.addEventListener('click', e => {
+    if (!b.classList.contains('flip')) {
+      b.classList.add('flip'); opened++; updateCount();
+      burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2, 10);
+      if (opened === REASONS.length) { $('rDone').classList.add('show'); setTimeout(() => heartRain(60), 500); }
+    } else b.classList.remove('flip'), opened--, updateCount();
+  });
+  rWrap.appendChild(b);
+});
+updateCount();
+
+/* ================= Tillar ================= */
 const LOVE = [
 ["O'zbekcha","Men seni sevaman"],["Русский","Я тебя люблю"],["English","I love you"],
 ["Қазақша","Мен сені сүйемін"],["Кыргызча","Мен сени сүйөм"],["Тоҷикӣ","Ман туро дӯст медорам"],
@@ -259,91 +459,243 @@ const LOVE = [
 ["Kreyòl ayisyen","Mwen renmen ou"],["Runasimi","Munakuyki"],["Avañe'ẽ","Rohayhu"],
 ["Diné bizaad","Ayóó ánííníshní"],["Morze kodi","·· / ·−·· −−− ··−· · / −·−− −−− ··−"],["Yurak tili","❤️"]
 ];
-
-const grid = document.getElementById('grid');
+const grid = $('grid');
 LOVE.forEach(([lang, phrase], i) => {
   const c = document.createElement('div');
   c.className = 'card reveal' + (i === 0 ? ' uz' : '');
   c.style.transitionDelay = (i % 5) * 60 + 'ms';
-  c.innerHTML = `<div class="p"></div><div class="l"></div>`;
+  c.innerHTML = '<div class="p"></div><div class="l"></div>';
   c.querySelector('.p').textContent = phrase;
   c.querySelector('.l').textContent = lang;
   grid.appendChild(c);
 });
-document.getElementById('count').textContent =
-  `${LOVE.length} ta tilda — va har birida bir xil ma'no: sen mening hammasisan.`;
-
-/* Katta aylanib turuvchi ibora */
-const big = document.getElementById('bigLove'), bp = document.getElementById('bigPhrase'), bl = document.getElementById('bigLang');
-let k = 0;
+$('count').textContent = `${LOVE.length} ta tilda — va har birida bir xil ma'no: sen mening hammasisan.`;
+const big = $('bigLove'); let k = 0;
 setInterval(() => {
   big.classList.add('fade');
-  setTimeout(() => { k = (k + 1) % LOVE.length; bl.textContent = LOVE[k][0]; bp.textContent = LOVE[k][1]; big.classList.remove('fade'); }, 600);
+  setTimeout(() => { k = (k + 1) % LOVE.length; $('bigLang').textContent = LOVE[k][0]; $('bigPhrase').textContent = LOVE[k][1]; big.classList.remove('fade'); }, 600);
 }, 2400);
 
-/* ---------- Scrollda paydo bo'lish ---------- */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+/* ================= Paydo bo'lish ================= */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); if (e.target.id === 'letter') typeLetter(); }
+}), { threshold: .15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ---------- Konvert ---------- */
-const intro = document.getElementById('intro'), env = document.getElementById('envelope');
-function openLetter(){
-  env.classList.add('open');
-  const r = env.getBoundingClientRect();
-  burst(r.left + r.width/2, r.top + r.height/2, 26);
-  setTimeout(() => { intro.classList.add('hide'); document.body.classList.remove('locked'); }, 900);
+/* ================= Xat — yozilib boradi ================= */
+const lp = [...document.querySelectorAll('#letter [data-t]')];
+let typing = false, typedAll = false;
+function finishLetter(){ typedAll = true; lp.forEach(p => p.textContent = p.dataset.t); }
+async function typeLetter(){
+  if (typing) return; typing = true;
+  if (still) return finishLetter();
+  const caret = document.createElement('span'); caret.className = 'caret';
+  for (const p of lp) {
+    const t = p.dataset.t;
+    for (let i = 1; i <= t.length; i++) {
+      if (typedAll) return caret.remove();
+      p.textContent = t.slice(0, i); p.appendChild(caret);
+      await new Promise(r => setTimeout(r, /[.,—:]/.test(t[i - 1]) ? 220 : 32));
+    }
+    await new Promise(r => setTimeout(r, 400));
+  }
+  caret.remove(); typedAll = true;
 }
-env.addEventListener('click', openLetter);
-env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLetter(); } });
+$('letter').addEventListener('click', finishLetter);
 
-/* ---------- Yurakchalar portlashi ---------- */
+/* ================= Ha / Yo'q o'yini ================= */
+const yes = $('yes'), no = $('no'), arena = $('arena');
+const NO_TEXTS = ["Ishonching komilmi? 🤨","Yana bir o'ylab ko'r 🥺","Rostdanmi?","Yuragim og'riyapti 💔","Oxirgi imkoniyat!","Baribir bosolmaysan 😄","Ha'ni bos 💗"];
+let tries = 0;
+function dodge(e){
+  if (e) e.preventDefault();
+  const a = arena.getBoundingClientRect();
+  no.textContent = NO_TEXTS[Math.min(tries, NO_TEXTS.length - 1)];
+  const w = no.offsetWidth, h = no.offsetHeight;
+  let x, y, guard = 0;
+  do {
+    x = 10 + Math.random() * (a.width - w - 20);
+    y = 90 + Math.random() * (a.height - h - 100);
+    guard++;
+  } while (guard < 20 && Math.abs(x - no.offsetLeft) < 80 && Math.abs(y - no.offsetTop) < 40);
+  no.style.left = x + 'px'; no.style.top = y + 'px';
+  tries++;
+  yes.style.transform = `scale(${Math.min(1 + tries * .12, 1.9)})`;
+}
+no.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') dodge(); });
+no.addEventListener('touchstart', dodge, { passive: false });
+no.addEventListener('click', dodge);
+yes.addEventListener('click', e => {
+  burst(e.clientX, e.clientY, 40);
+  arena.style.display = 'none';
+  $('result').classList.add('show');
+  heartRain(90);
+});
+
+/* ================= Yurakchalar ================= */
 const HEARTS = ['💗','💖','💕','❤️','🌸','💞'];
 function burst(x, y, n = 30){
   for (let i = 0; i < n; i++){
     const s = document.createElement('span');
-    s.className = 'burst';
-    s.textContent = HEARTS[i % HEARTS.length];
-    const a = Math.random() * Math.PI * 2, d = 120 + Math.random() * 220;
+    s.className = 'burst'; s.textContent = HEARTS[i % HEARTS.length];
+    const a = Math.random() * Math.PI * 2, d = 100 + Math.random() * 220;
     s.style.left = x + 'px'; s.style.top = y + 'px';
     s.style.setProperty('--dx', Math.cos(a) * d + 'px');
     s.style.setProperty('--dy', Math.sin(a) * d - 80 + 'px');
     s.style.setProperty('--r', (Math.random() * 120 - 60) + 'deg');
     s.style.fontSize = (16 + Math.random() * 18) + 'px';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 1900);
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1900);
   }
 }
-document.getElementById('loveBtn').addEventListener('click', e => burst(e.clientX, e.clientY, 40));
+function heartRain(n = 70){
+  for (let i = 0; i < n; i++) setTimeout(() => {
+    const s = document.createElement('span');
+    s.className = 'rain'; s.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = (16 + Math.random() * 26) + 'px';
+    const dur = 2.8 + Math.random() * 2.5;
+    s.style.animationDuration = dur + 's';
+    s.style.setProperty('--r', (Math.random() * 360 - 180) + 'deg');
+    document.body.appendChild(s); setTimeout(() => s.remove(), dur * 1000 + 100);
+  }, i * 45);
+}
+$('loveBtn').addEventListener('click', e => { burst(e.clientX, e.clientY, 40); heartRain(50); });
+/* Istalgan joyga bosganda kichik yurakcha */
+document.addEventListener('click', e => {
+  if (e.target.closest('button,.envelope,.letter')) return;
+  const s = document.createElement('span');
+  s.className = 'tap'; s.textContent = HEARTS[Math.floor(Math.random() * 4)];
+  s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+  document.body.appendChild(s); setTimeout(() => s.remove(), 1500);
+});
 
-/* ---------- Yog'ilayotgan gul barglari va yurakchalar ---------- */
-const cv = document.getElementById('petals'), ctx = cv.getContext('2d');
-let W, H, P = [];
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
-function size(){ W = innerWidth; H = innerHeight; cv.width = W * DPR; cv.height = H * DPR; cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
-size(); addEventListener('resize', size);
+/* ================= Konvert ================= */
+const intro = $('intro'), env = $('envelope');
+function openLetter(){
+  if (env.classList.contains('open')) return;
+  env.classList.add('open');
+  const r = env.getBoundingClientRect();
+  setTimeout(() => burst(r.left + r.width / 2, r.top, 30), 700);
+  setTimeout(() => { intro.classList.add('hide'); document.body.classList.remove('locked'); }, 1800);
+}
+env.addEventListener('click', openLetter);
+env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLetter(); } });
+
+/* ================= Kunduz → kecha ================= */
+let night = 0;
+const sky = $('sky'), petalsCv = $('petals'), bar = $('progress');
+function onScroll(){
+  const vh = innerHeight, top = $('xat').getBoundingClientRect().top;
+  night = Math.max(0, Math.min(1, (vh * 1.1 - top) / (vh * 0.9)));
+  sky.style.opacity = night;
+  petalsCv.style.opacity = 1 - night;
+  const max = document.documentElement.scrollHeight - vh;
+  bar.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+  document.querySelector('meta[name=theme-color]').content = night > .5 ? '#0b0d26' : '#f8e8e6';
+}
+addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+
+/* ================= Gul barglari ================= */
+const pc = petalsCv.getContext('2d');
+let W, H; const P = [];
+function size(){
+  W = innerWidth; H = innerHeight;
+  for (const c of [petalsCv, starCv]) { c.width = W * DPR; c.height = H * DPR; c.style.width = W + 'px'; c.style.height = H + 'px'; }
+  pc.setTransform(DPR,0,0,DPR,0,0); sc.setTransform(DPR,0,0,DPR,0,0);
+  makeStars();
+}
 const COLORS = ['#f4b6c0','#eea2b0','#f9cfd5','#e88b9c','#f6c4a8'];
-function make(top){
-  return { x: Math.random() * W, y: top ? Math.random() * H : -20, s: 6 + Math.random() * 9,
-    vy: .4 + Math.random() * .8, vx: -.3 + Math.random() * .6, r: Math.random() * 6.28, vr: -.02 + Math.random() * .04,
-    sw: Math.random() * 6.28, c: COLORS[Math.floor(Math.random() * COLORS.length)], heart: Math.random() < .28, o: .45 + Math.random() * .45 };
+function petal(top){
+  return { x: Math.random() * W, y: top ? Math.random() * H : -20, s: 6 + Math.random() * 9, vy: .4 + Math.random() * .8, vx: -.3 + Math.random() * .6,
+    r: Math.random() * 6.28, vr: -.02 + Math.random() * .04, sw: Math.random() * 6.28, c: COLORS[Math.floor(Math.random() * COLORS.length)], heart: Math.random() < .28, o: .45 + Math.random() * .45 };
 }
-const N = innerWidth < 600 ? 22 : 38;
-for (let i = 0; i < N; i++) P.push(make(true));
-function heartPath(s){ ctx.beginPath(); ctx.moveTo(0, s*.3); ctx.bezierCurveTo(0,0,-s*.5,0,-s*.5,s*.3); ctx.bezierCurveTo(-s*.5,s*.6,0,s*.8,0,s); ctx.bezierCurveTo(0,s*.8,s*.5,s*.6,s*.5,s*.3); ctx.bezierCurveTo(s*.5,0,0,0,0,s*.3); ctx.fill(); }
-const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-function tick(){
-  ctx.clearRect(0,0,W,H);
-  for (const p of P){
-    p.y += p.vy; p.sw += .02; p.x += p.vx + Math.sin(p.sw) * .4; p.r += p.vr;
-    if (p.y > H + 20) Object.assign(p, make(false));
-    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.globalAlpha = p.o; ctx.fillStyle = p.c;
-    if (p.heart) heartPath(p.s * 1.4);
-    else { ctx.beginPath(); ctx.ellipse(0, 0, p.s, p.s * .55, 0, 0, 6.28); ctx.fill(); }
-    ctx.restore();
+function heartPath(ctx, s){ ctx.beginPath(); ctx.moveTo(0,s*.3); ctx.bezierCurveTo(0,0,-s*.5,0,-s*.5,s*.3); ctx.bezierCurveTo(-s*.5,s*.6,0,s*.8,0,s); ctx.bezierCurveTo(0,s*.8,s*.5,s*.6,s*.5,s*.3); ctx.bezierCurveTo(s*.5,0,0,0,0,s*.3); ctx.fill(); }
+
+/* ================= Yulduzlar va uchar yulduzlar ================= */
+const starCv = $('stars'), sc = starCv.getContext('2d');
+let STARS = [], shooting = [];
+function makeStars(){
+  const n = Math.round(W * H / (W < 600 ? 3200 : 4200));
+  STARS = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() < .08 ? 1.6 + Math.random() : .4 + Math.random() * .9,
+    p: Math.random() * 6.28, sp: .01 + Math.random() * .03, c: Math.random() < .15 ? '#ffd9e4' : (Math.random() < .2 ? '#fff1cf' : '#ffffff') }));
+}
+size(); addEventListener('resize', size);
+const NP = innerWidth < 600 ? 22 : 38;
+for (let i = 0; i < NP; i++) P.push(petal(true));
+
+function frame(){
+  if (night < 1) {
+    pc.clearRect(0,0,W,H);
+    for (const p of P){
+      p.y += p.vy; p.sw += .02; p.x += p.vx + Math.sin(p.sw) * .4; p.r += p.vr;
+      if (p.y > H + 20) Object.assign(p, petal(false));
+      pc.save(); pc.translate(p.x, p.y); pc.rotate(p.r); pc.globalAlpha = p.o; pc.fillStyle = p.c;
+      if (p.heart) heartPath(pc, p.s * 1.4); else { pc.beginPath(); pc.ellipse(0,0,p.s,p.s*.55,0,0,6.28); pc.fill(); }
+      pc.restore();
+    }
   }
-  if (!still) requestAnimationFrame(tick);
+  if (night > 0) {
+    sc.clearRect(0,0,W,H);
+    for (const s of STARS){
+      s.p += s.sp; const a = .35 + .65 * (.5 + .5 * Math.sin(s.p));
+      sc.globalAlpha = a; sc.fillStyle = s.c; sc.beginPath(); sc.arc(s.x, s.y, s.r, 0, 6.28); sc.fill();
+      if (s.r > 1.5) { sc.globalAlpha = a * .12; sc.beginPath(); sc.arc(s.x, s.y, s.r * 2.4, 0, 6.28); sc.fill(); }
+    }
+    if (Math.random() < .006 && shooting.length < 2) shooting.push({ x: Math.random() * W * .8 + W * .2, y: Math.random() * H * .4, l: 0, v: 9 + Math.random() * 6 });
+    for (const s of shooting){
+      s.l += 1; s.x -= s.v; s.y += s.v * .45;
+      const g = sc.createLinearGradient(s.x, s.y, s.x + 120, s.y - 54);
+      g.addColorStop(0, 'rgba(255,255,255,.95)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+      sc.globalAlpha = Math.max(0, 1 - s.l / 70); sc.strokeStyle = g; sc.lineWidth = 2;
+      sc.beginPath(); sc.moveTo(s.x, s.y); sc.lineTo(s.x + 120, s.y - 54); sc.stroke();
+    }
+    shooting = shooting.filter(s => s.l < 70);
+    sc.globalAlpha = 1;
+  }
+  if (!still) requestAnimationFrame(frame);
 }
-tick();
+frame();
+
+/* ================= Yulduzlardan ism ================= */
+const cc = $('constellation'), cx = cc.getContext('2d');
+let CP = [], cStart = 0, cVisible = false, cRun = false;
+async function buildConstellation(){
+  try { await document.fonts.load('100px "Marck Script"'); } catch(e) {}
+  const w = cc.clientWidth, h = cc.clientHeight;
+  cc.width = w * DPR; cc.height = h * DPR; cx.setTransform(DPR,0,0,DPR,0,0);
+  const off = document.createElement('canvas'); off.width = w; off.height = h;
+  const o = off.getContext('2d');
+  let fs = h * .85; o.font = `${fs}px "Marck Script", cursive`;
+  const tw = o.measureText('Элмира').width; if (tw > w * .9) fs *= w * .9 / tw;
+  o.font = `${fs}px "Marck Script", cursive`; o.textAlign = 'center'; o.textBaseline = 'middle'; o.fillStyle = '#000';
+  o.fillText('Элмира', w / 2, h / 2);
+  const data = o.getImageData(0, 0, w, h).data, step = Math.max(3, Math.round(w / 150));
+  CP = [];
+  for (let y = 0; y < h; y += step) for (let x = 0; x < w; x += step)
+    if (data[(y * w + x) * 4 + 3] > 140) CP.push({ tx: x + (Math.random() - .5) * step * .6, ty: y + (Math.random() - .5) * step * .6,
+      sx: Math.random() * w, sy: Math.random() * h - h, d: Math.random() * .6, p: Math.random() * 6.28, r: .7 + Math.random() * 1.1 });
+}
+const ease = t => 1 - Math.pow(1 - t, 3);
+function drawConstellation(now){
+  const w = cc.clientWidth, h = cc.clientHeight;
+  cx.clearRect(0, 0, w, h);
+  const T = still ? 99 : (now - cStart) / 2600;
+  for (const s of CP){
+    const t = ease(Math.max(0, Math.min(1, (T - s.d) / .9)));
+    const x = s.sx + (s.tx - s.sx) * t, y = s.sy + (s.ty - s.sy) * t;
+    s.p += .05; const a = (.55 + .45 * Math.sin(s.p)) * Math.min(1, t * 1.5 + .1);
+    cx.globalAlpha = a * .3; cx.fillStyle = '#f5a9bd'; cx.beginPath(); cx.arc(x, y, s.r * 3, 0, 6.28); cx.fill();
+    cx.globalAlpha = a; cx.fillStyle = '#fff6f9'; cx.beginPath(); cx.arc(x, y, s.r, 0, 6.28); cx.fill();
+  }
+  cx.globalAlpha = 1;
+  if (cVisible && !still) requestAnimationFrame(drawConstellation); else cRun = false;
+}
+buildConstellation();
+new IntersectionObserver(es => es.forEach(e => {
+  cVisible = e.isIntersecting;
+  if (cVisible && !cRun) { if (!cStart) cStart = performance.now(); cRun = true; requestAnimationFrame(drawConstellation); }
+}), { threshold: .2 }).observe(cc);
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(buildConstellation, 300); });
 </script>
 </body>
 </html>
